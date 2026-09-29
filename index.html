@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Brand — contemporary clothing designed for the way you move.">
+    <title>My Brand — Contemporary Fashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="announcement">FREE SHIPPING ON ORDERS OVER $100 <span>•</span> NEW SEASON / 2026</div>
+
+    <header class="site-header" id="siteHeader">
+        <a class="logo" href="index.html"><img src="logo.png" height="80px" alt="Logo"></a>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="shop.html?category=Men">Men</a>
+            <a href="shop.html?category=Women">Women</a><a href="shop.html?new=true">New Arrivals</a>
+            <a href="index.html#collections">Collections</a><a href="about.html">About</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="openSearch()" aria-label="Search">⌕</button>
+            <button class="icon-btn" onclick="toast('Account area coming soon')" aria-label="Account">♙</button>
+            <button class="icon-btn" onclick="openWishlist()" aria-label="Wishlist">♡<span id="wishlistCount" class="count">0</span></button>
+            <button class="icon-btn bag-btn" onclick="openCart()" aria-label="Shopping bag">▢<span id="cartCount" class="count">0</span></button>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a><a href="shop.html?new=true">New Arrivals</a>
+        <a href="index.html#collections">Collections</a><a href="about.html">About</a>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-media"></div>
+            <div class="hero-content">
+                <p class="eyebrow">AUTUMN / WINTER 2026</p>
+                <h1>DEFINE<br><em>YOUR STYLE</em></h1>
+                <p>Contemporary clothing designed for the way you move.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-light" href="shop.html" style="color: brown;">Shop Collection</a>
+                    <a class="text-link light" href="shop.html?new=true">Explore New Arrivals →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="collections">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">CURATED FOR YOU</p>
+                    <h2>Explore the collections</h2>
+                </div><a class="text-link" href="shop.html">View all →</a></div>
+            <div class="category-grid">
+                <a class="category-card tall" href="shop.html?category=Men"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1000&q=85" alt="Men's collection">
+                    <div><span>01</span>
+                        <h3>Men's Collection</h3><b>Explore →</b></div>
+                </a>
+                <a class="category-card" href="shop.html?category=Women"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85" alt="Women's collection">
+                    <div><span>02</span>
+                        <h3>Women's Collection</h3><b>Explore →</b></div>
+                </a>
+                <a class="category-card" href="shop.html?new=true"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1000&q=85" alt="New arrivals">
+                    <div><span>03</span>
+                        <h3>New Arrivals</h3><b>Explore →</b></div>
+                </a>
+                <a class="category-card" href="shop.html?category=Accessories"><img src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=1000&q=85" alt="Accessories">
+                    <div><span>04</span>
+                        <h3>Accessories</h3><b>Explore →</b></div>
+                </a>
+            </div>
+        </section>
+
+        <section class="section product-section">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">THE EDIT</p>
+                    <h2>Featured pieces</h2>
+                </div><a class="text-link" href="shop.html">Shop all →</a></div>
+            <div class="filter-row">
+                <button class="filter-chip active" data-filter="All">All</button><button class="filter-chip" data-filter="Men">Men</button>
+                <button class="filter-chip" data-filter="Women">Women</button><button class="filter-chip" data-filter="Accessories">Accessories</button>
+                <select id="sortSelect" onchange="sortProducts(this.value)"><option value="featured">Featured</option><option value="newest">Newest</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <section class="tryon-banner">
+            <div class="tryon-copy">
+                <p class="eyebrow">YOUR DIGITAL FIT</p>
+                <h2>FIND<br><em>YOUR FIT</em></h2>
+                <p>Experience a smarter way to shop. See how selected clothing could look on you before making your choice.</p><button class="btn btn-dark" onclick="openVirtualFittingRoom()">
+    TRY IT VIRTUALLY →
+</button></div>
+            <div class="tryon-image"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1300&q=85" alt="Fashion portrait"></div>
+        </section>
+
+        <section class="section story-preview">
+            <div class="story-image"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85" alt="My Brand editorial fashion"></div>
+            <div class="story-copy">
+                <p class="eyebrow">OUR PHILOSOPHY</p>
+                <h2>Fashion is more than what you wear.</h2>
+                <p>It's how you express who you are. My Brand creates considered essentials and statement pieces with an editorial point of view, designed to live beyond a single season.</p><a class="btn btn-outline" href="about.html">Our Story</a></div>
+        </section>
+
+        <section class="newsletter">
+            <div>
+                <p class="eyebrow">STAY IN THE KNOW</p>
+                <h2>JOIN THE COMMUNITY</h2>
+                <p>Get first access to new collections, exclusive drops and special offers.</p>
+            </div>
+            <form onsubmit="subscribe(event)"><input type="email" id="newsletterEmail" placeholder="Your email address" required><button class="btn btn-dark">Subscribe →</button></form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-brand"><a class="logo" href="#">MY BRAND</a>
+            <p>Contemporary clothing designed for the way you move.</p>
+        </div>
+        <div>
+            <h4>Shop</h4><a href="shop.html?category=Men">Men</a><a href="shop.html?category=Women">Women</a><a href="shop.html?new=true">New Arrivals</a><a href="shop.html">Collections</a></div>
+        <div>
+            <h4>Customer Care</h4><a href="#">Contact</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Size Guide</a><a href="#">FAQ</a></div>
+        <div>
+            <h4>Company</h4><a href="about.html">About</a><a href="about.html">Our Story</a><a href="#">Careers</a></div>
+        <div>
+            <h4>Follow Us</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a><a href="#">Pinterest</a></div>
+        <div class="footer-bottom"><span>© 2026 My Brand. All rights reserved.</span><span><a href="#">Privacy Policy</a> · <a href="#">Terms & Conditions</a></span></div>
+    </footer>
+
+    <div class="overlay" id="overlay" onclick="closeAllOverlays()"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="drawer-head">
+            <h3>Your Bag</h3><button onclick="closeCart()">×</button></div>
+        <div id="cartItems"></div>
+        <div class="cart-summary">
+            <div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><button class="btn btn-dark full" onclick="toast('Checkout integration ready for your backend')">Checkout</button></div>
+    </aside>
+
+    <div class="modal" id="searchModal"><button class="modal-close" onclick="closeSearch()">×</button>
+        <div class="search-box">
+            <p class="eyebrow">SEARCH</p><input id="searchInput" oninput="searchProducts(this.value)" placeholder="Search shirts, jackets, trousers...">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+    <div class="modal" id="productModal"><button class="modal-close" onclick="closeProduct()">×</button>
+        <div id="productDetails"></div>
+    </div>
+    <div class="modal" id="sizeModal"><button class="modal-close" onclick="closeSizeModal()">×</button>
+        <div class="small-modal">
+            <p class="eyebrow">SIZE ASSISTANT</p>
+            <h2>Find My Size</h2>
+            <p>Our personalized size recommendation feature will be connected here. Soon you will be able to enter your measurements and receive a suggested size.</p><button class="btn btn-dark" onclick="closeSizeModal()">Got it</button></div>
+    </div>
+
+    <div class="modal" id="tryonModal"><button class="modal-close" onclick="closeVirtualFittingRoom()">×</button>
+        <div class="tryon-modal">
+            <div class="tryon-modal-head">
+                <p class="eyebrow">MY BRAND / TECHNOLOGY</p>
+                <h2>Virtual Fitting Room</h2>
+                <p>See how this outfit looks on you.</p>
+            </div>
+            <div class="tryon-preview" id="tryonPreview">
+                <span>Virtual fitting preview will appear here</span>
+            </div>
+            <div class="tryon-controls"><button class="btn btn-outline" onclick="openCamera()">Open Camera</button><button class="btn btn-outline" onclick="uploadPhotoPlaceholder()">Upload Photo</button><button class="btn btn-dark" onclick="startVirtualTryOn(window.activeTryOnProduct)">Start Virtual Try-On</button></div>
+            <p class="microcopy">Frontend placeholder only — connect your camera, photo upload, pose detection and AI/ML pipeline in <code>js/virtual-tryon.js</code>.</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/virtual-tryon.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product — My Brand</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT -->
+    <div class="announcement">
+        FREE SHIPPING ON ORDERS OVER $100
+        <span>•</span> NEW SEASON / 2026
+    </div>
+
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <a class="logo" href="index.html">
+            MY BRAND
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="shop.html?category=Men">Men</a>
+            <a href="shop.html?category=Women">Women</a>
+            <a href="shop.html?new=true">New Arrivals</a>
+            <a href="index.html#collections">Collections</a>
+            <a href="about.html">About</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button class="icon-btn" onclick="openSearch()">
+                ⌕
+            </button>
+
+            <button class="icon-btn" onclick="openWishlist()">
+                ♡
+                <span
+                    id="wishlistCount"
+                    class="count"
+                >
+                    0
+                </span>
+            </button>
+
+            <button class="icon-btn" onclick="openCart()">
+                ▢
+                <span
+                    id="cartCount"
+                    class="count"
+                >
+                    0
+                </span>
+            </button>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a>
+        <a href="shop.html?new=true">New Arrivals</a>
+        <a href="index.html#collections">Collections</a>
+        <a href="about.html">About</a>
+    </div>
+
+
+    <!-- PRODUCT PAGE -->
+    <main>
+
+        <div id="productPage" class="product-page"></div>
+
+    </main>
+
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay" onclick="closeAllOverlays()"></div>
+
+
+    <!-- CART DRAWER -->
+    <aside class="cart-drawer" id="cartDrawer">
+
+        <div class="drawer-head">
+
+            <h3>
+                Your Bag
+            </h3>
+
+            <button onclick="closeCart()">
+                ×
+            </button>
+
+        </div>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-summary">
+
+            <div>
+                <span>
+                    Subtotal
+                </span>
+
+                <strong id="cartSubtotal">
+                    $0.00
+                </strong>
+            </div>
+
+            <button class="btn btn-dark full">
+                Checkout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- SEARCH MODAL -->
+    <div class="modal" id="searchModal">
+
+        <button class="modal-close" onclick="closeSearch()">
+            ×
+        </button>
+
+        <div class="search-box">
+
+            <p class="eyebrow">
+                SEARCH
+            </p>
+
+            <input id="searchInput" oninput="searchProducts(this.value)" placeholder="Search...">
+
+            <div id="searchResults"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SIZE MODAL -->
+    <div class="modal" id="sizeModal">
+
+        <button class="modal-close" onclick="closeSizeModal()">
+            ×
+        </button>
+
+        <div class="small-modal">
+
+            <p class="eyebrow">
+                SIZE ASSISTANT
+            </p>
+
+            <h2>
+                Find My Size
+            </h2>
+
+            <p>
+                Our size recommendation feature will be integrated here later.
+            </p>
+
+            <button class="btn btn-dark" onclick="closeSizeModal()">
+                Got it
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         VIRTUAL TRY-ON MODAL
+         ========================================= -->
+
+    <div class="modal" id="tryonModal">
+
+        <!-- CLOSE BUTTON -->
+        <button class="modal-close" onclick="closeVirtualFittingRoom()">
+            ×
+        </button>
+
+
+        <!-- MODAL CONTENT -->
+        <div class="tryon-modal">
+
+            <p class="eyebrow">
+                MY BRAND / TECHNOLOGY
+            </p>
+
+            <h2>
+                Virtual Fitting Room
+            </h2>
+
+            <p>
+                See how this outfit looks on you.
+            </p>
+
+
+            <!-- CAMERA / PREVIEW -->
+            <div class="tryon-preview" id="tryonPreview">
+
+                <div class="tryon-placeholder">
+
+                    <div class="tryon-icon">
+                        ◉
+                    </div>
+
+                    <p>
+                        Virtual fitting preview will appear here
+                    </p>
+
+                    <small>
+                        Click "Open Camera" to start your virtual fitting room.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+            <div class="tryon-controls">
+
+                <!-- OPEN CAMERA -->
+                <button type="button" class="btn btn-outline" onclick="openCamera()">
+                    Open Camera
+                </button>
+
+
+                <!-- UPLOAD PHOTO -->
+                <button type="button" class="btn btn-outline" onclick="uploadPhotoPlaceholder()">
+                    Upload Photo
+                </button>
+
+
+                <!-- START VIRTUAL TRY ON -->
+                <button type="button" class="btn btn-dark" onclick="startVirtualTryOn(window.activeTryOnProduct)">
+                    Start Virtual Try-On
+                </button>
+
+            </div>
+
+
+            <p class="microcopy">
+                Use your camera to preview the selected clothing item.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/virtual-tryon.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <!-- PRODUCT PAGE INITIALIZATION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderProductPage();
+        });
+    </script>
+
+</body>
+
+</html>

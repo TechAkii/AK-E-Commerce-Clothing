@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Shop — My Brand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="announcement">FREE SHIPPING ON ORDERS OVER $100 <span>•</span> NEW SEASON / 2026</div>
+    <header class="site-header"><a class="logo" href="index.html">MY BRAND</a>
+        <nav class="desktop-nav"><a href="index.html">Home</a><a class="active" href="shop.html">Shop</a><a href="shop.html?category=Men">Men</a><a href="shop.html?category=Women">Women</a><a href="shop.html?new=true">New Arrivals</a><a href="index.html#collections">Collections</a>
+            <a href="about.html">About</a>
+        </nav>
+        <div class="header-actions"><button class="icon-btn" onclick="openSearch()">⌕</button><button class="icon-btn" onclick="toast('Account area coming soon')">♙</button><button class="icon-btn" onclick="openWishlist()">♡<span id="wishlistCount" class="count">0</span></button>
+            <button class="icon-btn" onclick="openCart()">▢<span id="cartCount" class="count">0</span></button><button class="menu-toggle" onclick="toggleMenu()">☰</button></div>
+    </header>
+    <div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="shop.html?category=Men">Men</a><a href="shop.html?category=Women">Women</a><a href="shop.html?new=true">New Arrivals</a><a href="index.html#collections">Collections</a><a href="about.html">About</a></div>
+    <main>
+        <section class="page-hero">
+            <p class="eyebrow">THE COMPLETE EDIT</p>
+            <h1>SHOP</h1>
+            <p>Discover the latest pieces from My Brand.</p>
+        </section>
+        <section class="section shop-layout">
+            <aside class="filters">
+                <h3>Filter</h3><label>Category<select id="categoryFilter"><option>All</option><option>Men</option><option>Women</option><option>Accessories</option></select></label><label>Size<select id="sizeFilter"><option>All</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select></label><label>Color<select id="colorFilter"><option>All</option><option>Black</option><option>White</option><option>Grey</option><option>Beige</option><option>Navy</option><option>Brown</option></select></label><label>Price<select id="priceFilter"><option>All</option><option value="0-60">Under $60</option><option value="60-100">$60–$100</option><option value="100-9999">$100+</option></select></label>
+                <label class="check"><input type="checkbox" id="newFilter"> New arrivals</label>
+            </aside>
+            <div class="shop-products">
+                <div class="shop-toolbar"><span id="resultCount"></span><select id="shopSort"><option value="featured">Featured</option><option value="newest">Newest</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select></div>
+                <div class="product-grid" id="productGrid"></div>
+            </div>
+        </section>
+    </main>
+    <div id="shared-overlays"></div>
+    <footer class="footer">
+        <div class="footer-brand"><a class="logo" href="index.html">MY BRAND</a>
+            <p>Contemporary clothing designed for the way you move.</p>
+        </div>
+        <div>
+            <h4>Shop</h4><a href="shop.html?category=Men">Men</a><a href="shop.html?category=Women">Women</a><a href="shop.html?new=true">New Arrivals</a></div>
+        <div>
+            <h4>Customer Care</h4><a href="#">Contact</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Size Guide</a></div>
+        <div>
+            <h4>Company</h4><a href="about.html">About</a><a href="#">Careers</a></div>
+        <div>
+            <h4>Follow Us</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+        <div class="footer-bottom"><span>© 2026 My Brand.</span><span><a href="#">Privacy Policy</a> · <a href="#">Terms</a></span></div>
+    </footer>
+    <div class="overlay" id="overlay" onclick="closeAllOverlays()"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="drawer-head">
+            <h3>Your Bag</h3><button onclick="closeCart()">×</button></div>
+        <div id="cartItems"></div>
+        <div class="cart-summary">
+            <div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><button class="btn btn-dark full" onclick="toast('Checkout integration ready for your backend')">Checkout</button></div>
+    </aside>
+    <div class="modal" id="searchModal"><button class="modal-close" onclick="closeSearch()">×</button>
+        <div class="search-box">
+            <p class="eyebrow">SEARCH</p><input id="searchInput" oninput="searchProducts(this.value)" placeholder="Search...">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+    <div class="modal" id="productModal"><button class="modal-close" onclick="closeProduct()">×</button>
+        <div id="productDetails"></div>
+    </div>
+    <div class="modal" id="sizeModal"><button class="modal-close" onclick="closeSizeModal()">×</button>
+        <div class="small-modal">
+            <p class="eyebrow">SIZE ASSISTANT</p>
+            <h2>Find My Size</h2>
+            <p>Your personalized size recommendation feature can be integrated here.</p><button class="btn btn-dark" onclick="closeSizeModal()">Got it</button></div>
+    </div>
+    <div class="modal" id="tryonModal"><button class="modal-close" onclick="closeVirtualFittingRoom()">×</button>
+        <div class="tryon-modal">
+            <p class="eyebrow">MY BRAND / TECHNOLOGY</p>
+            <h2>Virtual Fitting Room</h2>
+            <p>See how this outfit looks on you.</p>
+            <div class="tryon-preview" id="tryonPreview"><span>Virtual fitting preview will appear here</span></div>
+            <div class="tryon-controls"><button class="btn btn-outline" onclick="openCamera()">Open Camera</button><button class="btn btn-outline" onclick="uploadPhotoPlaceholder()">Upload Photo</button><button class="btn btn-dark" onclick="startVirtualTryOn(window.activeTryOnProduct)">Start Virtual Try-On</button></div>
+        </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/virtual-tryon.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initShopPage();
+        });
+    </script>
+</body>
+
+</html>
