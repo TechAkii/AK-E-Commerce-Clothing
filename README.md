@@ -48,6 +48,12 @@ The platform combines a responsive frontend with a Python/Flask backend and comp
 * Search modal
 * Mobile navigation menu
 
+### Screenshots
+![alt text](Screenshots/Screenshot%202026-10-01%20001734.png)
+![alt text](Screenshots/Screenshot%202026-10-01%20001734.png)
+![alt text](Screenshots/Screenshot%202026-10-01%20001803.png)
+![alt text](Screenshots/Screenshot%202026-10-01%20001812.png)
+
 ---
 
 # 🧠 Virtual Fitting Room
